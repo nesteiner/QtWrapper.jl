@@ -7,7 +7,7 @@ mutable struct QPushButton <: QtWidget
         result = new(pointer)
 
         finalizer(result) do obj
-            ccall(free, Cvoid, (Ptr{Nothing}, ), obj.pointer)
+            free(obj.pointer)
             Libc.free(string)
         end
 
