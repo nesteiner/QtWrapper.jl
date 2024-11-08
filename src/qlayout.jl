@@ -6,9 +6,7 @@ mutable struct QHBoxLayout <: QBoxLayout
         pointer = ccall(f, Ptr{Nothing}, ())
         result = new(pointer)
 
-        finalizer(result) do obj
-            free(obj.pointer)
-        end
+        finalizer(free, result)
 
         return result
     end
@@ -22,9 +20,7 @@ mutable struct QVBoxLayout <: QBoxLayout
         pointer = ccall(f, Ptr{Nothing}, ())
         result = new(pointer)
 
-        finalizer(result) do obj
-            free(obj.pointer)
-        end
+        finalizer(free, result)
 
         return result
     end

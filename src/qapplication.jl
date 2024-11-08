@@ -1,18 +1,22 @@
+single_app = nothing
+
 mutable struct QApplication <: QObject
     pointer::Ptr{Nothing}
 
     function QApplication(argv::Vector{String})
+        global single_app
+        if !isnothing(single_app)
+            finalize(single_app)
+        end
+
         len = length(argv)
 
         f = dlsym(libqt_wrapper[], "application")
         pointer = ccall(f, Ptr{Nothing}, (Int, Vector{Cstring}), len, argv)
-        result = new(pointer)
+        single_app = new(pointer)
 
-        finalizer(result) do obj 
-            free(obj.pointer)
-        end
-
-        return result
+        finalizer(free, single_app)
+        return single_app
     end
 end
 

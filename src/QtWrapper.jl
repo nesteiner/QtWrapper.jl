@@ -26,7 +26,6 @@ function free(obj::QObject)
 end
 
 ptr(app::QObject) = app.pointer
-ptr(widget::QtWidget) = widget.pointer
 ptr(::Nothing) = C_NULL
 
 include("qapplication.jl")

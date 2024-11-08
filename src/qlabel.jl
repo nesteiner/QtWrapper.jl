@@ -6,10 +6,7 @@ mutable struct QLabel <: QtWidget
         pointer = ccall(f, Ptr{Nothing}, (Cstring, Ptr{Nothing}), text, ptr(parent))
         result = new(pointer)
 
-        finalizer(result) do obj
-            free(obj.pointer)
-            Libc.free(string)
-        end
+        finalizer(free, result)
 
         return result
     end

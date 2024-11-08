@@ -6,9 +6,7 @@ mutable struct QWidget <: QtWidget
         pointer = ccall(f, Ptr{Nothing}, (Ptr{Nothing}, ), ptr(parent))
         result = new(pointer)
 
-        finalizer(result) do obj
-            free(obj.pointer)
-        end
+        finalizer(free, result)
 
         return result
     end
