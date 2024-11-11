@@ -3,6 +3,9 @@
     "files.associations": {
         "qapplication": "cpp",
         "qlabel": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "qpushbutton": "cpp",
+        "qobject": "cpp",
+        "qlayout": "cpp"
     }
 }

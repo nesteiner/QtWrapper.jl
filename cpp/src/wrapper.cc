@@ -3,18 +3,7 @@
 #include "label.cc"
 #include "layout.cc"
 #include "widget.cc"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#include "lineedit.cc"
+#include "combobox.cc"
+#include "checkbox.cc"
+#include "slider.cc"

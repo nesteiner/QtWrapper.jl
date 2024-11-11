@@ -16,7 +16,7 @@ function mywindow()::QWidget
     return window
 end
 
-function main()
+function createapp()
     app = QApplication(String[])
     window = mywindow()
     showWidget!(window)
@@ -24,4 +24,4 @@ function main()
     exec!(app)
 end
 
-main()
+createapp()

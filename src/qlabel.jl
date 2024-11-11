@@ -1,4 +1,4 @@
-mutable struct QLabel <: QtWidget
+@pub mutable struct QLabel <: QtWidget
     pointer::Ptr{Nothing}
 
     function QLabel(text::String, parent::Union{QtWidget, Nothing} = nothing)

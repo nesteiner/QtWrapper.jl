@@ -1,6 +1,6 @@
 single_app = nothing
 
-mutable struct QApplication <: QObject
+@pub mutable struct QApplication <: QObject
     pointer::Ptr{Nothing}
 
     function QApplication(argv::Vector{String})
@@ -20,7 +20,7 @@ mutable struct QApplication <: QObject
     end
 end
 
-function exec!(app::QApplication)
+@pub function exec!(app::QApplication)
     f = dlsym(libqt_wrapper[], "exec")
     ccall(f, Cvoid, (Ptr{Nothing}, ), ptr(app))
 end

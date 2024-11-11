@@ -1,4 +1,4 @@
-mutable struct QHBoxLayout <: QBoxLayout
+@pub mutable struct QHBoxLayout <: QBoxLayout
     pointer::Ptr{Nothing}
 
     function QHBoxLayout()
@@ -12,7 +12,7 @@ mutable struct QHBoxLayout <: QBoxLayout
     end
 end
 
-mutable struct QVBoxLayout <: QBoxLayout
+@pub mutable struct QVBoxLayout <: QBoxLayout
     pointer::Ptr{Nothing}
 
     function QVBoxLayout()
@@ -26,7 +26,7 @@ mutable struct QVBoxLayout <: QBoxLayout
     end
 end
 
-function addLayout!(layout::QBoxLayout, sublayout::QLayout)
+@pub function addLayout!(layout::QBoxLayout, sublayout::QLayout)
     if layout isa QHBoxLayout
         f = dlsym(libqt_wrapper[], "horizontal_add_layout")
         ccall(f, Cvoid, (Ptr{Nothing}, Ptr{Nothing}), ptr(layout), ptr(sublayout))
@@ -38,7 +38,7 @@ function addLayout!(layout::QBoxLayout, sublayout::QLayout)
     end
 end
 
-function addStretch!(layout::QBoxLayout, n::Int = 0)
+@pub function addStretch!(layout::QBoxLayout, n::Int = 0)
     if layout isa QHBoxLayout
         f = dlsym(libqt_wrapper[], "horizontal_add_stretch")
         ccall(f, Cvoid, (Ptr{Nothing}, Cint), ptr(layout), n)
@@ -50,7 +50,7 @@ function addStretch!(layout::QBoxLayout, n::Int = 0)
     end
 end
 
-function addWidget!(layout::QLayout, widget::QtWidget)
+@pub function addWidget!(layout::QLayout, widget::QtWidget)
     f = dlsym(libqt_wrapper[], "layout_add_widget")
     ccall(f, Cvoid, (Ptr{Nothing}, Ptr{Nothing}), ptr(layout), ptr(widget))
 end
