@@ -1,7 +1,5 @@
 #include "customwidget.h"
 
-
-
 void CustomWidget::register_slot(const char *signal_name, void (*slot)(void *)) {
     slotmap[std::string(signal_name)] = [slot](void *data) {
         slot(data);

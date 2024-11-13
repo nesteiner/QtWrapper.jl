@@ -1,7 +1,7 @@
 #ifndef CUSTOMWIDGET_H
 #define CUSTOMWIDGET_H
 
-#include "common.h"
+#include "../common.h"
 
 class Q_WIDGETS_EXPORT CustomWidget : public QWidget {
     Q_OBJECT

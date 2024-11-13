@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 
 void * lineedit(const char * text, void * parent) {
     QString qstring(text);

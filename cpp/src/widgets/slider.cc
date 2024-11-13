@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 
 void slider_connect_value_changed(void * pwidget, void (*callback)(int)) {
     QSlider * slider = static_cast<QSlider*>(pwidget);

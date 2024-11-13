@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 
 void combobox_connect_activated(void * pwidget, void (*callback)(int)) {
     QComboBox * combobox = static_cast<QComboBox*>(pwidget);

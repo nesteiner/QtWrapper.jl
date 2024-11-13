@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 
 void * widget(void * parent) {
     return new QWidget(static_cast<QWidget *>(parent));

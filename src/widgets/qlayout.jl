@@ -6,7 +6,7 @@
         pointer = ccall(f, Ptr{Nothing}, ())
         result = new(pointer)
 
-        finalizer(free, result)
+        finalizer(freeQObject, result)
 
         return result
     end
@@ -20,7 +20,7 @@ end
         pointer = ccall(f, Ptr{Nothing}, ())
         result = new(pointer)
 
-        finalizer(free, result)
+        finalizer(freeQObject, result)
 
         return result
     end

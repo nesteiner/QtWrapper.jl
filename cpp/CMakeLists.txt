@@ -12,7 +12,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 qt_add_library(
     qt_wrapper
     lib.cc
-    src/customwidget.cc
+    src/widgets/customwidget.cc
     # ${MOC_OUTPUT}/moc_customwidget.cc
 )
 target_sources(qt_wrapper PRIVATE lib.cc)

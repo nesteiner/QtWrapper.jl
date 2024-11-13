@@ -17,4 +17,7 @@
 
 #include <unordered_map>
 #include <functional>
+
+#include <stdlib.h>
+#include <string.h>
 #endif

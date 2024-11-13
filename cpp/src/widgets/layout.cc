@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 void * horizontal_layout() {
     return new QHBoxLayout();
 }

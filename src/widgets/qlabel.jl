@@ -1,4 +1,4 @@
-@pub mutable struct QLabel <: QtWidget
+@pub mutable struct QLabel <: QFrame
     pointer::Ptr{Nothing}
 
     function QLabel(text::String, parent::Union{QtWidget, Nothing} = nothing)
@@ -6,7 +6,7 @@
         pointer = ccall(f, Ptr{Nothing}, (Cstring, Ptr{Nothing}), text, ptr(parent))
         result = new(pointer)
 
-        finalizer(free, result)
+        finalizer(freeQObject, result)
 
         return result
     end

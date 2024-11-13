@@ -5,6 +5,7 @@ using Libdl
 
 abstract type QObject end
 abstract type QtWidget <: QObject end
+abstract type QFrame <: QtWidget end
 abstract type QAbstractButton <: QtWidget end
 abstract type QLayout <: QObject end
 abstract type QBoxLayout <: QLayout end
@@ -16,12 +17,18 @@ function __init__()
     libqt_wrapper[] = dlopen(path)
 end
 
-function free(obj::QObject)
+function freeQObject(obj::QObject)
     f = dlsym(libqt_wrapper[], "free_qobject")
     ccall(f, Cvoid, (Ptr{Nothing}, ), ptr(obj))
 end
 
-ptr(app::QObject) = app.pointer
+function freeCommon(obj)
+    f = dlsym(libqt_wrapper[], "free_common")
+    ccall(f, Cvoid, (Ptr{Nothing}, ), ptr(obj))
+end
+
+ptr(obj) = obj.pointer
+ptr(obj::QObject) = obj.pointer
 ptr(::Nothing) = C_NULL
 
 macro pub(ex)
@@ -46,12 +53,21 @@ macro pub(ex)
 end
 
 include("qapplication.jl")
-include("qlayout.jl")
-include("qwidget.jl")
-include("qlabel.jl")
-include("qbutton.jl")
-include("qlineedit.jl")
-include("customwidget.jl")
+# include core
+include("core/enum.jl")
+include("core/qsize.jl")
+
+# include gui
+include("gui/qicon.jl")
+include("gui/qkeysequence.jl")
+# include widgets
+
+include("widgets/qlayout.jl")
+include("widgets/qwidget.jl")
+include("widgets/qlabel.jl")
+include("widgets/qbutton.jl")
+include("widgets/qlineedit.jl")
+include("widgets/customwidget.jl")
 # include("qcombobox.jl")
 
 if false

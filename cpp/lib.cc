@@ -1,11 +1,8 @@
 #include "src/common.h"
 
-
-
 extern "C" {
-    class CustomWidget;     
     #include "src/wrapper.cc"
-    #include "src/customwidget.h"       
+    #include "src/widgets/customwidget.h"       
     typedef struct CustomWidget CustomWidget;    
     void free_qobject(void * qobject) {
         delete static_cast<QObject*>(qobject);
@@ -26,5 +23,9 @@ extern "C" {
 
     void custom_emit_signal(void * pwidget, const char * signal_name, void * user_data) {
         static_cast<CustomWidget*>(pwidget) -> emit_custom_signal(signal_name, user_data);
+    }
+
+    void free_common(void * ptr) {
+        delete ptr;
     }
 }

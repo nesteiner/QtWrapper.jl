@@ -15,7 +15,7 @@ single_app = nothing
         pointer = ccall(f, Ptr{Nothing}, (Int, Vector{Cstring}), len, argv)
         single_app = new(pointer)
 
-        finalizer(free, single_app)
+        finalizer(freeQObject, single_app)
         return single_app
     end
 end
