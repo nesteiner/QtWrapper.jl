@@ -31,27 +31,7 @@ ptr(obj) = obj.pointer
 ptr(obj::QObject) = obj.pointer
 ptr(::Nothing) = C_NULL
 
-macro pub(ex)
-    __module__.eval(ex)
-    #function
-    if ex.head == :function || ex.head == :(=)
-        if ex.args[1].head == :where
-            :(export $(ex.args[1].args[1].args[1]))
-        else
-            :(export $(ex.args[1].args[1]))
-        end
-    elseif ex.head == :struct# struct
-        if ex.args[2] isa Symbol
-            :(export $(ex.args[2]))
-        else
-            :(export $(ex.args[2].args[1]))
-        end
-    else
-        error("not a define of struct or function")
-    end
-
-end
-
+include("utils/pub.jl")
 include("qapplication.jl")
 # include core
 include("core/enum.jl")

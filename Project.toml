@@ -1,7 +1,7 @@
 name = "QtWrapper"
 uuid = "dfb065b5-a9c9-4cf9-b634-cd9e94ef2948"
 authors = ["steiner <steiner3044@163.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
