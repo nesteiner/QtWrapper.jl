@@ -31,7 +31,7 @@ end
         f = dlsym(libqt_wrapper[], "horizontal_add_layout")
         ccall(f, Cvoid, (Ptr{Nothing}, Ptr{Nothing}), ptr(layout), ptr(sublayout))
     elseif layout isa QVBoxLayout
-        f = dlsym(libqt_wrapper[], "vertial_add_layout")
+        f = dlsym(libqt_wrapper[], "vertical_add_layout")
         ccall(f, Cvoid, (Ptr{Nothing}, Ptr{Nothing}), ptr(layout), ptr(sublayout))
     else
         error("Unknown layout type")

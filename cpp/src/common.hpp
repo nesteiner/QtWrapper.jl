@@ -20,4 +20,14 @@
 
 #include <stdlib.h>
 #include <string.h>
+
+template <typename T>
+void require_non_null(T * ptr, const char * message) {
+    if (ptr == NULL || ptr == nullptr) {
+        perror(message);
+        exit(EXIT_FAILURE);
+    }
+}
+
+
 #endif

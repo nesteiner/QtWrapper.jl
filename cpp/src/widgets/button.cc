@@ -1,7 +1,9 @@
-#include "../common.h"
+#include "../common.hpp"
 
 // constructors
 void * push_button(const char * text, void * parent) {
+    require_non_null(text, "push_button, text is null");
+
     QString string(text);
     return new QPushButton(string, static_cast<QWidget *>(parent));
 }

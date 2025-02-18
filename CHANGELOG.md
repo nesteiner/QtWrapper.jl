@@ -1,5 +1,16 @@
 # ChangeLog
 
+## v0.1.2 2025-2-18 not working
+
+### Add
+
+1. `require_non_null` function in `cpp`
+2. test in cpp
+
+### Update
+
+readme on how to build library
+
 ## v0.1.1 2025-2-17
 
 ### Update

@@ -1,8 +1,8 @@
-#include "src/common.h"
+#include "src/common.hpp"
 
 extern "C" {
     #include "src/wrapper.cc"
-    #include "src/widgets/customwidget.h"       
+    #include "src/widgets/customwidget.hpp"       
     typedef struct CustomWidget CustomWidget;    
     void free_qobject(void * qobject) {
         delete static_cast<QObject*>(qobject);

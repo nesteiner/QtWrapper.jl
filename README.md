@@ -1,4 +1,7 @@
 # [Developing] QtWrapper.jl
+
+## 项目介绍
+
 最近闲的没事闲，想把 Qt 的 C++ 语言接口给封装起来，方便 Julia 调用
 大家不要看虽然代码这么多，但其实很简单，
 
@@ -33,6 +36,7 @@ public slots:
 ```
 
 然后是暴露的C接口
+
 ```c
 void * custom_widget(void * parent) {
     return new CustomWidget(static_cast<QWidget*>(parent));
@@ -91,6 +95,22 @@ end)
 showWidget!(customWidget)
 exec!(app)
 ```
+
+## 用法
+
+首先最重要的就是构建 `cpp` 目录下的 `libqt_wrapper.so`
+在 `cpp` 目录下执行以下命令
+
+```bash
+make clean
+cd build/
+rm -rf *
+cmake ..
+make
+make install
+```
+
+然后就可以运行 `examples` 中的例子了
 
 ## 待开发的组件
 
